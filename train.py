@@ -28,8 +28,6 @@ def main(args):
     checkpoint_callback_last = ModelCheckpoint(dirpath=ckpt_dir, save_on_train_epoch_end=True, filename='{epoch}-last')
     
     trainer = pl.Trainer(
-        # precision='bf16-mixed',  # 标准 FP32  '16-mixed'	混合精度（推荐）	FP16 + FP32	加速训练，节省显存 
-        # 'bf16-mixed'	混合精度（bfloat16）	BF16 + FP32	A100/H100 上更稳定
         accelerator=config['accelerator'],
         devices=config['devices'],
         
